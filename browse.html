@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Browse Items - Swappy</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="images/logo.png" alt="Swappy Logo" height="40" class="d-inline-block align-text-top me-2">
+                Swappy
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="browse.html">Browse Items</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="upload.html">Upload Item</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="rules.html">Rules</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact Us</a>
+                    </li>
+                </ul>
+                <div class="d-flex align-items-center">
+                    <!-- Accessibility Toggle -->
+                    <div class="accessibility-toggle me-3">
+                        <button class="btn btn-outline-light" id="accessibilityBtn" title="Toggle Accessibility Mode">
+                            <i class="fas fa-universal-access"></i>
+                        </button>
+                    </div>
+                    <div class="token-display me-3">
+                        <span class="badge bg-warning text-dark">
+                            <i class="fas fa-coins me-1"></i> Tokens: <span id="tokenCount">0</span>
+                        </span>
+                    </div>
+                    <div id="loginButtons">
+                        <a href="login.html" class="btn btn-outline-light me-2">Login</a>
+                        <a href="register.html" class="btn btn-light">Register</a>
+                    </div>
+                    <div id="userProfile" class="d-none">
+                        <div class="dropdown">
+                            <button class="btn btn-light dropdown-toggle" type="button" id="userDropdown" data-bs-toggle="dropdown">
+                                <i class="fas fa-user-circle me-1"></i> <span id="username">User</span>
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-end">
+                                <li><a class="dropdown-item" href="profile.html">My Profile</a></li>
+                                <li><a class="dropdown-item" href="my-items.html">My Items</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="#" id="logoutBtn">Logout</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Browse Header -->
+    <section class="bg-light py-4">
+        <div class="container">
+            <h1 class="mb-4">Browse Items</h1>
+            <div class="row">
+                <div class="col-md-8">
+                    <p class="lead">Discover items available for swap from fellow University of Melbourne students.</p>
+                </div>
+                <div class="col-md-4 text-md-end">
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-outline-secondary" id="gridViewBtn" title="Grid View">
+                            <i class="fas fa-th-large"></i>
+                        </button>
+                        <button type="button" class="btn btn-outline-secondary" id="listViewBtn" title="List View">
+                            <i class="fas fa-list"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Filter and Items Section -->
+    <section class="py-4">
+        <div class="container">
+            <div class="row">
+                <!-- Filters Sidebar -->
+                <div class="col-lg-3 mb-4">
+                    <div class="card shadow-sm">
+                        <div class="card-header bg-white">
+                            <h5 class="mb-0">Filters</h5>
+                        </div>
+                        <div class="card-body">
+                            <form id="filterForm">
+                                <!-- Search -->
+                                <div class="mb-3">
+                                    <label for="searchInput" class="form-label">Search</label>
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" id="searchInput" placeholder="Search items...">
+                                        <button class="btn btn-outline-secondary" type="button" id="searchBtn">
+                                            <i class="fas fa-search"></i>
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <!-- Categories -->
+                                <div class="mb-3">
+                                    <label class="form-label">Categories</label>
+                                    <div class="form-check">
+                                        <input class="form-check-input category-filter" type="checkbox" value="books" id="categoryBooks" checked>
+                                        <label class="form-check-label" for="categoryBooks">Books & Textbooks</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input category-filter" type="checkbox" value="electronics" id="categoryElectronics" checked>
+                                        <label class="form-check-label" for="categoryElectronics">Electronics</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input category-filter" type="checkbox" value="clothing" id="categoryClothing" checked>
+                                        <label class="form-check-label" for="categoryClothing">Clothing</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input category-filter" type="checkbox" value="furniture" id="categoryFurniture" checked>
+                                        <label class="form-check-label" for="categoryFurniture">Furniture</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input category-filter" type="checkbox" value="kitchen" id="categoryKitchen" checked>
+                                        <label class="form-check-label" for="categoryKitchen">Kitchen & Appliances</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input category-filter" type="checkbox" value="stationery" id="categoryStationery" checked>
+                                        <label class="form-check-label" for="categoryStationery">Stationery</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input category-filter" type="checkbox" value="other" id="categoryOther" checked>
+                                        <label class="form-check-label" for="categoryOther">Other</label>
+                                    </div>
+                                </div>
+
+                                <!-- Condition -->
+                                <div class="mb-3">
+                                    <label class="form-label">Condition</label>
+                                    <div class="form-check">
+                                        <input class="form-check-input condition-filter" type="checkbox" value="new" id="conditionNew" checked>
+                                        <label class="form-check-label" for="conditionNew">New</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input condition-filter" type="checkbox" value="likeNew" id="conditionLikeNew" checked>
+                                        <label class="form-check-label" for="conditionLikeNew">Like New</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input condition-filter" type="checkbox" value="good" id="conditionGood" checked>
+                                        <label class="form-check-label" for="conditionGood">Good</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input condition-filter" type="checkbox" value="fair" id="conditionFair" checked>
+                                        <label class="form-check-label" for="conditionFair">Fair</label>
+                                    </div>
+                                </div>
+
+                                <!-- Date Posted -->
+                                <div class="mb-3">
+                                    <label class="form-label">Date Posted</label>
+                                    <select class="form-select" id="datePosted">
+                                        <option value="all" selected>All Time</option>
+                                        <option value="today">Today</option>
+                                        <option value="week">This Week</option>
+                                        <option value="month">This Month</option>
+                                    </select>
+                                </div>
+
+                                <!-- Weekly Theme -->
+                                <div class="mb-3">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="weeklyTheme" id="weeklyThemeFilter">
+                                        <label class="form-check-label" for="weeklyThemeFilter">
+                                            <span class="text-success">Weekly Theme Items Only</span>
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <!-- Reset Filters -->
+                                <button type="reset" class="btn btn-outline-secondary w-100" id="resetFilters">
+                                    <i class="fas fa-undo me-1"></i> Reset Filters
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Items Grid -->
+                <div class="col-lg-9">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <div>
+                            <span id="itemCount" class="text-muted">Showing 12 items</span>
+                        </div>
+                        <div>
+                            <select class="form-select form-select-sm" id="sortOptions">
+                                <option value="newest">Newest First</option>
+                                <option value="oldest">Oldest First</option>
+                                <option value="az">A-Z</option>
+                                <option value="za">Z-A</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Grid View (Default) -->
+                    <div id="itemsGrid" class="row g-4">
+                        <!-- Item 1 -->
+                        <div class="col-md-4 col-sm-6 item-card" data-category="books" data-condition="good" data-date="2025-04-20">
+                            <div class="card h-100">
+                                <img src="images/item1.jpg" class="card-img-top" alt="Textbook">
+                                <div class="card-body">
+                                    <span class="badge bg-info mb-2">Books</span>
+                                    <h5 class="card-title">Textbook: Introduction to Economics</h5>
+                                    <p class="card-text">Excellent condition, 2023 edition</p>
+                                </div>
+                                <div class="card-footer bg-white d-flex justify-content-between align-items-center">
+                                    <small class="text-muted">Posted 5 days ago</small>
+                                    <a href="item-details.html?id=1" class="btn btn-sm btn-primary">View Details</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Item 2 -->
+                        <div class="col-md-4 col-sm-6 item-card" data-category="electronics" data-condition="likeNew" data-date="2025-04-22">
+                            <div class="card h-100">
+                                <img src="images/item2.jpg" class="card-img-top" alt="Calculator">
+                                <div class="card-body">
+                                    <span class="badge bg-info mb-2">Electronics</span>
+                                    <h5 class="card-title">Scientific Calculator</h5>
+                                    <p class="card-text">Barely used, perfect for engineering students</p>
+                                </div>
+                                <div class="card-footer bg-white d-flex justify-content-between align-items-center">
+                                    <small class="text-muted">Posted 3 days ago</small>
+                                    <a href="item-details.html?id=2" class="btn btn-sm btn-primary">View Details</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Item 3 -->
+                        <div class="col-md-4 col-sm-6 item-card" data-category="clothing" data-condition="good" data-date="2025-04-18" data-theme="true">
+                            <div class="card h-100 border-success">
+                                <div class="weekly-theme-badge">
+                                    <span class="badge bg-success">Weekly Theme</span>
+                                </div>
+                                <img src="images/item3.jpg" class="card-img-top" alt="Hoodie">
+                                <div class="card-body">
+                                    <span class="badge bg-info mb-2">Clothing</span>
+                                    <h5 class="card-title">University Hoodie</h5>
+                                    <p class="card-text">Size M, worn only a few times</p>
+                                </div>
+                                <div class="card-footer bg-white d-flex justify-content-between align-items-center">
+                                    <small class="text-muted">Posted 1 week ago</small>
+                                    <a href="item-details.html?id=3" class="btn btn-sm btn-primary">View Details</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Item 4 -->
+                        <div class="col-md-4 col-sm-6 item-card" data-category="kitchen" data-condition="good" data-date="2025-04-21">
+                            <div class="card h-100">
+                                <img src="images/item4.jpg" class="card-img-top" alt="Desk Lamp">
+                                <div class="card-body">
+                                    <span class="badge bg-info mb-2">Home</span>
+                                    <h5 class="card-title">Desk Lamp</h5>
+                                    <p class="card-text">LED desk lamp with adjustable brightness</p>
+                                </div>
+                                <div class="card-footer bg-white d-flex justify-content-between align-items-center">
+                                    <small class="text-muted">Posted 4 days ago</small>
+                                    <a href="item-details.html?id=4" class="btn btn-sm btn-primary">View Details</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Item 5 -->
+                        <div class="col-md-4 col-sm-6 item-card" data-category="furniture" data-condition="fair" data-date="2025-04-15">
+                            <div class="card h-100">
+                                <img src="images/item5.jpg" class="card-img-top" alt="Desk Chair">
+                                <div class="card-body">
+                                    <span class="badge bg-info mb-2">Furniture</span>
+                                    <h5 class="card-title">Ergonomic Desk Chair</h5>
+                                    <p class="card-text">Comfortable chair, some wear but fully functional</p>
+                                </div>
+                                <div class="card-footer bg-white d-flex justify-content-between align-items-center">
+                                    <small class="text-muted">Posted 10 days ago</small>
+                                    <a href="item-details.html?id=5" class="btn btn-sm btn-primary">View Details</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Item 6 -->
+                        <div class="col-md-4 col-sm-6 item-card" data-category="clothing" data-condition="new" data-date="2025-04-24" data-theme="true">
+                            <div class="card h-100 border-success">
+                                <div class="weekly-theme-badge">
+                                    <span class="badge bg-success">Weekly Theme</span>
+                                </div>
+                                <img src="images/item6.jpg" class="card-img-top" alt="Winter Jacket">
+                                <div class="card-body">
+                                    <span class="badge bg-info mb-2">Clothing</span>
+                                    <h5 class="card-title">Winter Jacket</h5>
+                                    <p class="card-text">Brand new with tags, size L</p>
+                                </div>
+                                <div class="card-footer bg-white d-flex justify-content-between align-items-center">
+                                    <small class="text-muted">Posted 1 day ago</small>
+                                    <a href="item-details.html?id=6" class="btn btn-sm btn-primary">View Details</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- More items (7-12) -->
+                        <!-- Item 7 -->
+                        <div class="col-md-4 col-sm-6 item-card" data-category="stationery" data-condition="new" data-date="2025-04-23">
+                            <div class="card h-100">
+                                <img src="images/item7.jpg" class="card-img-top" alt="Notebook Set">
+                                <div class="card-body">
+                                    <span class="badge bg-info mb-2">Stationery</span>
+                                    <h5 class="card-title">Premium Notebook Set</h5>
+                                    <p class="card-text">Set of 3 hardcover notebooks, never used</p>
+                                </div>
+                                <div class="card-footer bg-white d-flex justify-content-between align-items-center">
+                                    <small class="text-muted">Posted 2 days ago</small>
+                                    <a href="item-details.html?id=7" class="btn btn-sm btn-primary">View Details</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Item 8 -->
+                        <div class="col-md-4 col-sm-6 item-card" data-category="books" data-condition="good" data-date="2025-04-19">
+                            <div class="card h-100">
+                                <img src="images/item8.jpg" class="card-img-top" alt="Psychology Textbook">
+                                <div class="card-body">
+                                    <span class="badge bg-info mb-2">Books</span>
+                                    <h5 class="card-title">Psychology 101 Textbook</h5>
+                                    <p class="card-text">Minor highlighting, otherwise in great condition</p>
+                                </div>
+                                <div class="card-footer bg-white d-flex justify-content-between align-items-center">
+                                    <small class="text-muted">Posted 6 days ago</small>
+                                    <a href="item-details.html?id=8" class="btn btn-sm btn-primary">View Details</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Item 9 -->
+                        <div class="col-md-4 col-sm-6 item-card" data-category="clothing" data-condition="likeNew" data-date="2025-04-22" data-theme="true">
+                            <div class="card h-100 border-success">
+                                <div class="weekly-theme-badge">
+                                    <span class="badge bg-success">Weekly Theme</span>
+                                </div>
+                                <img src="images/item9.jpg" class="card-img-top" alt="Scarf">
+                                <div class="card-body">
+                                    <span class="badge bg-info mb-2">Clothing</span>
+                                    <h5 class="card-title">Wool Scarf</h5>
+                                    <p class="card-text">Warm winter scarf, worn once</p>
+                                </div>
+                                <div class="card-footer bg-white d-flex justify-content-between align-items-center">
+                                    <small class="text-muted">Posted 3 days ago</small>
+                                    <a href="item-details.html?id=9" class="btn btn-sm btn-primary">View Details</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Item 10 -->
+                        <div class="col-md-4 col-sm-6 item-card" data-category="electronics" data-condition="good" data-date="2025-04-17">
+                            <div class="card h-100">
+                                <img src="images/item10.jpg" class="card-img-top" alt="Headphones">
+                                <div class="card-body">
+                                    <span class="badge bg-info mb-2">Electronics</span>
+                                    <h5 class="card-title">Noise-Cancelling Headphones</h5>
+                                    <p class="card-text">Great for studying, minor wear on ear pads</p>
+                                </div>
+                                <div class="card-footer bg-white d-flex justify-content-between align-items-center">
+                                    <small class="text-muted">Posted 8 days ago</small>
+                                    <a href="item-details.html?id=10" class="btn btn-sm btn-primary">View Details</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Item 11 -->
+                        <div class="col-md-4 col-sm-6 item-card" data-category="kitchen" data-condition="likeNew" data-date="2025-04-20">
+                            <div class="card h-100">
+                                <img src="images/item11.jpg" class="card-img-top" alt="Coffee Maker">
+                                <div class="card-body">
+                                    <span class="badge bg-info mb-2">Kitchen</span>
+                                    <h5 class="card-title">Single-Serve Coffee Maker</h5>
+                                    <p class="card-text">Used only a few times, works perfectly</p>
+                                </div>
+                                <div class="card-footer bg-white d-flex justify-content-between align-items-center">
+                                    <small class="text-muted">Posted 5 days ago</small>
+                                    <a href="item-details.html?id=11" class="btn btn-sm btn-primary">View Details</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Item 12 -->
+                        <div class="col-md-4 col-sm-6 item-card" data-category="clothing" data-condition="good" data-date="2025-04-21" data-theme="true">
+                            <div class="card h-100 border-success">
+                                <div class="weekly-theme-badge">
+                                    <span class="badge bg-success">Weekly Theme</span>
+                                </div>
+                                <img src="images/item12.jpg" class="card-img-top" alt="Backpack">
+                                <div class="card-body">
+                                    <span class="badge bg-info mb-2">Clothing</span>
+                                    <h5 class="card-title">Laptop Backpack</h5>
+                                    <p class="card-text">Padded laptop compartment, water-resistant</p>
+                                </div>
+                                <div class="card-footer bg-white d-flex justify-content-between align-items-center">
+                                    <small class="text-muted">Posted 4 days ago</small>
+                                    <a href="item-details.html?id=12" class="btn btn-sm btn-primary">View Details</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- List View (Hidden by default) -->
+                    <div id="itemsList" class="d-none">
+                        <div class="list-group">
+                            <!-- List items will be dynamically generated by JavaScript -->
+                            <!-- Example list item -->
+                            <div class="list-group-item list-group-item-action item-list-row" data-category="books" data-condition="good" data-date="2025-04-20">
+                                <div class="row align-items-center">
+                                    <div class="col-md-2">
+                                        <img src="images/item1.jpg" class="img-fluid rounded" alt="Textbook">
+                                    </div>
+                                    <div class="col-md-7">
+                                        <div class="d-flex w-100 justify-content-between">
+                                            <h5 class="mb-1">Textbook: Introduction to Economics</h5>
+                                            <span class="badge bg-info">Books</span>
+                                        </div>
+                                        <p class="mb-1">Excellent condition, 2023 edition</p>
+                                        <small class="text-muted">Posted 5 days ago</small>
+                                    </div>
+                                    <div class="col-md-3 text-end">
+                                        <a href="item-details.html?id=1" class="btn btn-primary">View Details</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Pagination -->
+                    <nav aria-label="Page navigation" class="mt-4">
+                        <ul class="pagination justify-content-center">
+                            <li class="page-item disabled">
+                                <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+                            </li>
+                            <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                            <li class="page-item">
+                                <a class="page-link" href="#">Next</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4 mb-md-0">
+                    <h5>About Swappy</h5>
+                    <p>Swappy is the University of Melbourne's sustainable swap shop platform, promoting reuse and reducing waste within our university community.</p>
+                </div>
+                <div class="col-md-2 mb-4 mb-md-0">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="index.html" class="text-white">Home</a></li>
+                        <li><a href="browse.html" class="text-white">Browse Items</a></li>
+                        <li><a href="upload.html" class="text-white">Upload Item</a></li>
+                        <li><a href="rules.html" class="text-white">Rules</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3 mb-4 mb-md-0">
+                    <h5>Contact Us</h5>
+                    <ul class="list-unstyled">
+                        <li><i class="fas fa-map-marker-alt me-2"></i> Student Union Building, University of Melbourne</li>
+                        <li><i class="fas fa-envelope me-2"></i> swappy@unimelb.edu.au</li>
+                        <li><i class="fas fa-phone me-2"></i> (03) 8344 XXXX</li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h5>Opening Hours</h5>
+                    <ul class="list-unstyled">
+                        <li>Tuesday - Friday: 10am - 4pm</li>
+                        <li>Saturday: 11am - 3pm</li>
+                        <li>Sunday: Closed</li>
+                        <li>Monday: Drop-off Day (Closed for regular operations)</li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="row align-items-center">
+                <div class="col-md-6 text-center text-md-start">
+                    <p class="mb-0">&copy; 2025 Swappy - University of Melbourne. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <ul class="list-inline mb-0">
+                        <li class="list-inline-item"><a href="#" class="text-white"><i class="fab fa-facebook-f"></i></a></li>
+                        <li class="list-inline-item"><a href="#" class="text-white"><i class="fab fa-instagram"></i></a></li>
+                        <li class="list-inline-item"><a href="#" class="text-white"><i class="fab fa-twitter"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/browse.js"></script>
+</body>
+</html>

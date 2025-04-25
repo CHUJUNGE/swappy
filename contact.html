@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Swappy</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="images/logo.png" alt="Swappy Logo" height="40" class="d-inline-block align-text-top me-2">
+                Swappy
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="browse.html">Browse Items</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="upload.html">Upload Item</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="rules.html">Rules</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="contact.html">Contact Us</a>
+                    </li>
+                </ul>
+                <div class="d-flex align-items-center">
+                    <!-- Accessibility Toggle -->
+                    <div class="accessibility-toggle me-3">
+                        <button class="btn btn-outline-light" id="accessibilityBtn" title="Toggle Accessibility Mode">
+                            <i class="fas fa-universal-access"></i>
+                        </button>
+                    </div>
+                    <div class="token-display me-3">
+                        <span class="badge bg-warning text-dark">
+                            <i class="fas fa-coins me-1"></i> Tokens: <span id="tokenCount">0</span>
+                        </span>
+                    </div>
+                    <div id="loginButtons">
+                        <a href="login.html" class="btn btn-outline-light me-2">Login</a>
+                        <a href="register.html" class="btn btn-light">Register</a>
+                    </div>
+                    <div id="userProfile" class="d-none">
+                        <div class="dropdown">
+                            <button class="btn btn-light dropdown-toggle" type="button" id="userDropdown" data-bs-toggle="dropdown">
+                                <i class="fas fa-user-circle me-1"></i> <span id="username">User</span>
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-end">
+                                <li><a class="dropdown-item" href="profile.html">My Profile</a></li>
+                                <li><a class="dropdown-item" href="my-items.html">My Items</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="#" id="logoutBtn">Logout</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Contact Header -->
+    <section class="bg-light py-4">
+        <div class="container">
+            <h1 class="mb-3">Contact Us</h1>
+            <p class="lead">Have questions or need assistance? We're here to help!</p>
+        </div>
+    </section>
+
+    <!-- Contact Content -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row">
+                <!-- Contact Form -->
+                <div class="col-lg-8 mb-4 mb-lg-0">
+                    <div class="card shadow-sm">
+                        <div class="card-header bg-white">
+                            <h4 class="mb-0">Send Us a Message</h4>
+                        </div>
+                        <div class="card-body">
+                            <form id="contactForm" class="needs-validation" novalidate>
+                                <!-- Name -->
+                                <div class="mb-3">
+                                    <label for="name" class="form-label">Full Name <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" id="name" required>
+                                    <div class="invalid-feedback">
+                                        Please provide your name.
+                                    </div>
+                                </div>
+
+                                <!-- Email -->
+                                <div class="mb-3">
+                                    <label for="email" class="form-label">University Email <span class="text-danger">*</span></label>
+                                    <input type="email" class="form-control" id="email" placeholder="your.name@student.unimelb.edu.au" required>
+                                    <div class="invalid-feedback">
+                                        Please provide a valid university email address.
+                                    </div>
+                                </div>
+
+                                <!-- Subject -->
+                                <div class="mb-3">
+                                    <label for="subject" class="form-label">Subject <span class="text-danger">*</span></label>
+                                    <select class="form-select" id="subject" required>
+                                        <option value="" selected disabled>Select a subject</option>
+                                        <option value="general">General Inquiry</option>
+                                        <option value="item">Item Submission Question</option>
+                                        <option value="approval">Approval Process</option>
+                                        <option value="tokens">Token System</option>
+                                        <option value="account">Account Issues</option>
+                                        <option value="feedback">Feedback/Suggestions</option>
+                                        <option value="technical">Technical Support</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                    <div class="invalid-feedback">
+                                        Please select a subject.
+                                    </div>
+                                </div>
+
+                                <!-- Message -->
+                                <div class="mb-3">
+                                    <label for="message" class="form-label">Message <span class="text-danger">*</span></label>
+                                    <textarea class="form-control" id="message" rows="5" required></textarea>
+                                    <div class="invalid-feedback">
+                                        Please provide a message.
+                                    </div>
+                                </div>
+
+                                <!-- Order/Item ID -->
+                                <div class="mb-3">
+                                    <label for="itemId" class="form-label">Item ID (if applicable)</label>
+                                    <input type="text" class="form-control" id="itemId" placeholder="e.g., ITEM-12345">
+                                    <div class="form-text">If your inquiry is about a specific item, please provide the Item ID.</div>
+                                </div>
+
+                                <!-- File Upload -->
+                                <div class="mb-3">
+                                    <label for="attachment" class="form-label">Attachment (optional)</label>
+                                    <input type="file" class="form-control" id="attachment">
+                                    <div class="form-text">Max file size: 5MB. Supported formats: JPG, PNG, PDF.</div>
+                                </div>
+
+                                <!-- Submit Button -->
+                                <div class="d-grid">
+                                    <button type="submit" class="btn btn-primary">Send Message</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Information -->
+                <div class="col-lg-4">
+                    <!-- Contact Info Card -->
+                    <div class="card shadow-sm mb-4">
+                        <div class="card-header bg-white">
+                            <h4 class="mb-0">Contact Information</h4>
+                        </div>
+                        <div class="card-body">
+                            <ul class="list-unstyled">
+                                <li class="d-flex mb-4">
+                                    <div class="contact-icon me-3">
+                                        <i class="fas fa-map-marker-alt fa-2x text-primary"></i>
+                                    </div>
+                                    <div>
+                                        <h5>Location</h5>
+                                        <p class="mb-0">
+                                            Swappy Exchange Center<br>
+                                            Student Union Building, Level 2<br>
+                                            University of Melbourne<br>
+                                            Parkville, VIC 3010
+                                        </p>
+                                    </div>
+                                </li>
+                                <li class="d-flex mb-4">
+                                    <div class="contact-icon me-3">
+                                        <i class="fas fa-envelope fa-2x text-primary"></i>
+                                    </div>
+                                    <div>
+                                        <h5>Email</h5>
+                                        <p class="mb-0">
+                                            <a href="mailto:swappy@unimelb.edu.au" class="text-decoration-none">swappy@unimelb.edu.au</a>
+                                        </p>
+                                        <p class="text-muted small mb-0">We typically respond within 24 hours on weekdays.</p>
+                                    </div>
+                                </li>
+                                <li class="d-flex mb-4">
+                                    <div class="contact-icon me-3">
+                                        <i class="fas fa-phone fa-2x text-primary"></i>
+                                    </div>
+                                    <div>
+                                        <h5>Phone</h5>
+                                        <p class="mb-0">
+                                            <a href="tel:+61383444000" class="text-decoration-none">(03) 8344 XXXX</a>
+                                        </p>
+                                        <p class="text-muted small mb-0">Available during opening hours only.</p>
+                                    </div>
+                                </li>
+                                <li class="d-flex">
+                                    <div class="contact-icon me-3">
+                                        <i class="fas fa-clock fa-2x text-primary"></i>
+                                    </div>
+                                    <div>
+                                        <h5>Hours</h5>
+                                        <p class="mb-0">
+                                            Tuesday - Friday: 10am - 4pm<br>
+                                            Saturday: 11am - 3pm<br>
+                                            Sunday: Closed<br>
+                                            Monday: Drop-off Day Only (10am - 4pm)
+                                        </p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Social Media Card -->
+                    <div class="card shadow-sm mb-4">
+                        <div class="card-header bg-white">
+                            <h4 class="mb-0">Connect With Us</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="d-flex justify-content-around">
+                                <a href="#" class="text-decoration-none">
+                                    <div class="text-center">
+                                        <i class="fab fa-facebook-f fa-2x text-primary mb-2"></i>
+                                        <p class="mb-0">Facebook</p>
+                                    </div>
+                                </a>
+                                <a href="#" class="text-decoration-none">
+                                    <div class="text-center">
+                                        <i class="fab fa-instagram fa-2x text-danger mb-2"></i>
+                                        <p class="mb-0">Instagram</p>
+                                    </div>
+                                </a>
+                                <a href="#" class="text-decoration-none">
+                                    <div class="text-center">
+                                        <i class="fab fa-twitter fa-2x text-info mb-2"></i>
+                                        <p class="mb-0">Twitter</p>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- FAQ Card -->
+                    <div class="card shadow-sm">
+                        <div class="card-header bg-white">
+                            <h4 class="mb-0">Frequently Asked Questions</h4>
+                        </div>
+                        <div class="card-body">
+                            <p>Check our FAQ section for quick answers to common questions.</p>
+                            <div class="d-grid">
+                                <a href="faq.html" class="btn btn-outline-primary">
+                                    <i class="fas fa-question-circle me-2"></i> View FAQ
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center mb-4">Find Us</h2>
+            <div class="card shadow-sm">
+                <div class="card-body p-0">
+                    <div class="ratio ratio-21x9">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3152.6767096467347!2d144.95940661531773!3d-37.79911797975444!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad642b6af832249%3A0xe39e415e49a7c44e!2sUniversity%20of%20Melbourne!5e0!3m2!1sen!2sau!4v1619567345750!5m2!1sen!2sau" allowfullscreen="" loading="lazy"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Success Modal -->
+    <div class="modal fade" id="successModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header bg-success text-white">
+                    <h5 class="modal-title">Message Sent Successfully!</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center py-4">
+                    <i class="fas fa-check-circle fa-5x text-success mb-3"></i>
+                    <h4>Thank You!</h4>
+                    <p>Your message has been sent successfully. We'll get back to you as soon as possible.</p>
+                    <p>Reference Number: <strong><span id="referenceNumber">SW-12345</span></strong></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4 mb-md-0">
+                    <h5>About Swappy</h5>
+                    <p>Swappy is the University of Melbourne's sustainable swap shop platform, promoting reuse and reducing waste within our university community.</p>
+                </div>
+                <div class="col-md-2 mb-4 mb-md-0">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="index.html" class="text-white">Home</a></li>
+                        <li><a href="browse.html" class="text-white">Browse Items</a></li>
+                        <li><a href="upload.html" class="text-white">Upload Item</a></li>
+                        <li><a href="rules.html" class="text-white">Rules</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3 mb-4 mb-md-0">
+                    <h5>Contact Us</h5>
+                    <ul class="list-unstyled">
+                        <li><i class="fas fa-map-marker-alt me-2"></i> Student Union Building, University of Melbourne</li>
+                        <li><i class="fas fa-envelope me-2"></i> swappy@unimelb.edu.au</li>
+                        <li><i class="fas fa-phone me-2"></i> (03) 8344 XXXX</li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h5>Opening Hours</h5>
+                    <ul class="list-unstyled">
+                        <li>Tuesday - Friday: 10am - 4pm</li>
+                        <li>Saturday: 11am - 3pm</li>
+                        <li>Sunday: Closed</li>
+                        <li>Monday: Drop-off Day (Closed for regular operations)</li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="row align-items-center">
+                <div class="col-md-6 text-center text-md-start">
+                    <p class="mb-0">&copy; 2025 Swappy - University of Melbourne. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <ul class="list-inline mb-0">
+                        <li class="list-inline-item"><a href="#" class="text-white"><i class="fab fa-facebook-f"></i></a></li>
+                        <li class="list-inline-item"><a href="#" class="text-white"><i class="fab fa-instagram"></i></a></li>
+                        <li class="list-inline-item"><a href="#" class="text-white"><i class="fab fa-twitter"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/contact.js"></script>
+</body>
+</html>

@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Swappy - University of Melbourne Swap Shop</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="images/logo.png" alt="Swappy Logo" height="40" class="d-inline-block align-text-top me-2">
+                Swappy
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="browse.html">Browse Items</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="upload.html">Upload Item</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="rules.html">Rules</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact Us</a>
+                    </li>
+                </ul>
+                <div class="d-flex align-items-center">
+                    <!-- Accessibility Toggle -->
+                    <div class="accessibility-toggle me-3">
+                        <button class="btn btn-outline-light" id="accessibilityBtn" title="Toggle Accessibility Mode">
+                            <i class="fas fa-universal-access"></i>
+                        </button>
+                    </div>
+                    <div class="token-display me-3">
+                        <span class="badge bg-warning text-dark">
+                            <i class="fas fa-coins me-1"></i> Tokens: <span id="tokenCount">0</span>
+                        </span>
+                    </div>
+                    <div id="loginButtons">
+                        <a href="login.html" class="btn btn-outline-light me-2">Login</a>
+                        <a href="register.html" class="btn btn-light">Register</a>
+                    </div>
+                    <div id="userProfile" class="d-none">
+                        <div class="dropdown">
+                            <button class="btn btn-light dropdown-toggle" type="button" id="userDropdown" data-bs-toggle="dropdown">
+                                <i class="fas fa-user-circle me-1"></i> <span id="username">User</span>
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-end">
+                                <li><a class="dropdown-item" href="profile.html">My Profile</a></li>
+                                <li><a class="dropdown-item" href="my-items.html">My Items</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="#" id="logoutBtn">Logout</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section py-5 bg-light">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <h1 class="display-4 fw-bold mb-3">Welcome to Swappy</h1>
+                    <p class="lead mb-4">The University of Melbourne's sustainable swap shop platform. Exchange items you no longer need and find treasures from fellow students.</p>
+                    <div class="d-flex gap-3">
+                        <a href="browse.html" class="btn btn-primary btn-lg">Browse Items</a>
+                        <a href="upload.html" class="btn btn-outline-primary btn-lg">Upload Item</a>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <img src="images/hero-image.jpg" alt="Swappy Exchange" class="img-fluid rounded shadow-lg">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Weekly Theme Section -->
+    <section class="py-5">
+        <div class="container">
+            <div class="card border-0 bg-success text-white shadow">
+                <div class="card-body p-4">
+                    <div class="row align-items-center">
+                        <div class="col-md-8">
+                            <h2 class="card-title">This Week's Theme: Clothing Exchange Week!</h2>
+                            <p class="card-text">Refresh your wardrobe sustainably! This week we're focusing on clothing exchanges. Bring your gently used clothing items and find something new to you!</p>
+                            <p class="mb-0"><strong>Drop-off Day:</strong> Monday, April 29, 2025 (Store closed for regular operations)</p>
+                        </div>
+                        <div class="col-md-4 text-center">
+                            <i class="fas fa-tshirt fa-5x mb-3"></i>
+                            <a href="upload.html?category=clothing" class="btn btn-light">Participate Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center mb-5">How Swappy Works</h2>
+            <div class="row g-4">
+                <div class="col-md-3">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body text-center">
+                            <div class="circle-icon bg-primary mb-3">
+                                <i class="fas fa-upload"></i>
+                            </div>
+                            <h5 class="card-title">Upload</h5>
+                            <p class="card-text">Upload photos and details of items you want to swap.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body text-center">
+                            <div class="circle-icon bg-primary mb-3">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <h5 class="card-title">Get Approved</h5>
+                            <p class="card-text">Our team reviews your item for quality and suitability.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body text-center">
+                            <div class="circle-icon bg-primary mb-3">
+                                <i class="fas fa-exchange-alt"></i>
+                            </div>
+                            <h5 class="card-title">Drop Off</h5>
+                            <p class="card-text">Bring your approved items to our physical location on campus.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body text-center">
+                            <div class="circle-icon bg-primary mb-3">
+                                <i class="fas fa-coins"></i>
+                            </div>
+                            <h5 class="card-title">Earn Tokens</h5>
+                            <p class="card-text">Receive tokens for each item, redeemable for other items.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Items Section -->
+    <section class="py-5">
+        <div class="container">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h2>Featured Items</h2>
+                <a href="browse.html" class="btn btn-outline-primary">View All</a>
+            </div>
+            <div class="row g-4" id="featuredItems">
+                <!-- Featured items will be loaded here via JavaScript -->
+                <!-- Placeholder items -->
+                <div class="col-md-3">
+                    <div class="card h-100">
+                        <img src="images/item1.jpg" class="card-img-top" alt="Item 1">
+                        <div class="card-body">
+                            <span class="badge bg-info mb-2">Books</span>
+                            <h5 class="card-title">Textbook: Introduction to Economics</h5>
+                            <p class="card-text">Excellent condition, 2023 edition</p>
+                        </div>
+                        <div class="card-footer bg-white d-flex justify-content-between align-items-center">
+                            <small class="text-muted">Posted 2 days ago</small>
+                            <a href="item-details.html?id=1" class="btn btn-sm btn-primary">View Details</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card h-100">
+                        <img src="images/item2.jpg" class="card-img-top" alt="Item 2">
+                        <div class="card-body">
+                            <span class="badge bg-info mb-2">Electronics</span>
+                            <h5 class="card-title">Scientific Calculator</h5>
+                            <p class="card-text">Barely used, perfect for engineering students</p>
+                        </div>
+                        <div class="card-footer bg-white d-flex justify-content-between align-items-center">
+                            <small class="text-muted">Posted 3 days ago</small>
+                            <a href="item-details.html?id=2" class="btn btn-sm btn-primary">View Details</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card h-100">
+                        <img src="images/item3.jpg" class="card-img-top" alt="Item 3">
+                        <div class="card-body">
+                            <span class="badge bg-info mb-2">Clothing</span>
+                            <h5 class="card-title">University Hoodie</h5>
+                            <p class="card-text">Size M, worn only a few times</p>
+                        </div>
+                        <div class="card-footer bg-white d-flex justify-content-between align-items-center">
+                            <small class="text-muted">Posted 1 week ago</small>
+                            <a href="item-details.html?id=3" class="btn btn-sm btn-primary">View Details</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card h-100">
+                        <img src="images/item4.jpg" class="card-img-top" alt="Item 4">
+                        <div class="card-body">
+                            <span class="badge bg-info mb-2">Home</span>
+                            <h5 class="card-title">Desk Lamp</h5>
+                            <p class="card-text">LED desk lamp with adjustable brightness</p>
+                        </div>
+                        <div class="card-footer bg-white d-flex justify-content-between align-items-center">
+                            <small class="text-muted">Posted 5 days ago</small>
+                            <a href="item-details.html?id=4" class="btn btn-sm btn-primary">View Details</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center mb-5">What Our Users Say</h2>
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body">
+                            <div class="d-flex mb-3">
+                                <div class="text-warning">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                            <p class="card-text">"Swappy has been a game-changer for me! I've found so many useful items for my studies without spending a fortune. The token system is brilliant."</p>
+                            <div class="d-flex align-items-center">
+                                <img src="images/user1.jpg" alt="User" class="rounded-circle me-3" width="50">
+                                <div>
+                                    <h6 class="mb-0">Sarah Johnson</h6>
+                                    <small class="text-muted">Science Student</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body">
+                            <div class="d-flex mb-3">
+                                <div class="text-warning">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                            <p class="card-text">"As an international student, Swappy helped me find essential items when I first arrived. The community is so supportive and the process is super easy!"</p>
+                            <div class="d-flex align-items-center">
+                                <img src="images/user2.jpg" alt="User" class="rounded-circle me-3" width="50">
+                                <div>
+                                    <h6 class="mb-0">David Chen</h6>
+                                    <small class="text-muted">Engineering Student</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body">
+                            <div class="d-flex mb-3">
+                                <div class="text-warning">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                </div>
+                            </div>
+                            <p class="card-text">"I love the weekly themes! It's a great way to focus on specific categories and find exactly what you need. The clothing exchange week was fantastic."</p>
+                            <div class="d-flex align-items-center">
+                                <img src="images/user3.jpg" alt="User" class="rounded-circle me-3" width="50">
+                                <div>
+                                    <h6 class="mb-0">Emily Taylor</h6>
+                                    <small class="text-muted">Arts Student</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4 mb-md-0">
+                    <h5>About Swappy</h5>
+                    <p>Swappy is the University of Melbourne's sustainable swap shop platform, promoting reuse and reducing waste within our university community.</p>
+                </div>
+                <div class="col-md-2 mb-4 mb-md-0">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="index.html" class="text-white">Home</a></li>
+                        <li><a href="browse.html" class="text-white">Browse Items</a></li>
+                        <li><a href="upload.html" class="text-white">Upload Item</a></li>
+                        <li><a href="rules.html" class="text-white">Rules</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3 mb-4 mb-md-0">
+                    <h5>Contact Us</h5>
+                    <ul class="list-unstyled">
+                        <li><i class="fas fa-map-marker-alt me-2"></i> Student Union Building, University of Melbourne</li>
+                        <li><i class="fas fa-envelope me-2"></i> swappy@unimelb.edu.au</li>
+                        <li><i class="fas fa-phone me-2"></i> (03) 8344 XXXX</li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h5>Opening Hours</h5>
+                    <ul class="list-unstyled">
+                        <li>Tuesday - Friday: 10am - 4pm</li>
+                        <li>Saturday: 11am - 3pm</li>
+                        <li>Sunday: Closed</li>
+                        <li>Monday: Drop-off Day (Closed for regular operations)</li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="row align-items-center">
+                <div class="col-md-6 text-center text-md-start">
+                    <p class="mb-0">&copy; 2025 Swappy - University of Melbourne. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <ul class="list-inline mb-0">
+                        <li class="list-inline-item"><a href="#" class="text-white"><i class="fab fa-facebook-f"></i></a></li>
+                        <li class="list-inline-item"><a href="#" class="text-white"><i class="fab fa-instagram"></i></a></li>
+                        <li class="list-inline-item"><a href="#" class="text-white"><i class="fab fa-twitter"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

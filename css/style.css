@@ -1,0 +1,359 @@
+/* 
+ * Swappy - University of Melbourne Swap Shop
+ * Main Stylesheet
+ */
+
+/* Global Styles */
+:root {
+    --primary-color: #0c63e4;
+    --secondary-color: #6c757d;
+    --success-color: #198754;
+    --info-color: #0dcaf0;
+    --warning-color: #ffc107;
+    --danger-color: #dc3545;
+    --light-color: #f8f9fa;
+    --dark-color: #212529;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Navbar Styles */
+.navbar-brand img {
+    filter: drop-shadow(0px 0px 3px rgba(0, 0, 0, 0.3));
+}
+
+.token-display {
+    transition: all 0.3s ease;
+}
+
+.token-display:hover {
+    transform: scale(1.05);
+}
+
+/* Hero Section */
+.hero-section {
+    background-color: var(--light-color);
+    padding: 4rem 0;
+}
+
+.hero-section img {
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: all 0.5s ease;
+}
+
+.hero-section img:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+}
+
+/* Weekly Theme Section */
+.weekly-theme-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 10;
+}
+
+/* Card Styles */
+.card {
+    transition: all 0.3s ease;
+    border-radius: 0.5rem;
+    overflow: hidden;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.card-img-top {
+    height: 200px;
+    object-fit: cover;
+}
+
+.border-success {
+    border-width: 2px !important;
+}
+
+/* Circle Icons */
+.circle-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    color: white;
+}
+
+.circle-icon i {
+    font-size: 24px;
+}
+
+/* Photo Upload Styles */
+.photo-upload-box {
+    height: 150px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.photo-upload-box:hover {
+    background-color: #f8f9fa;
+    border-color: var(--primary-color) !important;
+}
+
+.photo-preview {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Divider Text */
+.divider-text {
+    position: relative;
+    display: inline-block;
+    padding: 0 15px;
+    color: #6c757d;
+}
+
+.divider-text::before,
+.divider-text::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    width: 100px;
+    height: 1px;
+    background-color: #dee2e6;
+}
+
+.divider-text::before {
+    right: 100%;
+}
+
+.divider-text::after {
+    left: 100%;
+}
+
+/* Item Grid/List View */
+.item-card {
+    transition: all 0.3s ease;
+}
+
+.item-list-row {
+    transition: all 0.3s ease;
+}
+
+.item-list-row:hover {
+    background-color: #f8f9fa;
+}
+
+/* Contact Icons */
+.contact-icon {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Footer Styles */
+footer {
+    margin-top: auto;
+}
+
+footer a {
+    transition: all 0.3s ease;
+}
+
+footer a:hover {
+    opacity: 0.8;
+    text-decoration: underline !important;
+}
+
+footer .list-inline-item a {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.1);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+footer .list-inline-item a:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-3px);
+}
+
+/* Testimonials */
+.testimonial-card {
+    height: 100%;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .hero-section {
+        text-align: center;
+        padding: 2rem 0;
+    }
+    
+    .hero-section img {
+        margin-top: 2rem;
+    }
+    
+    .card-img-top {
+        height: 180px;
+    }
+}
+
+/* Animation Classes */
+.fade-in {
+    animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Browse Page Specific Styles */
+#itemsList .list-group-item {
+    border-left: none;
+    border-right: none;
+}
+
+#itemsList .list-group-item:first-child {
+    border-top: none;
+}
+
+#itemsList .list-group-item:last-child {
+    border-bottom: none;
+}
+
+/* Rules Page Specific Styles */
+.list-group-item.active {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+/* Login/Register Page Specific Styles */
+.form-control:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.25rem rgba(12, 99, 228, 0.25);
+}
+
+/* Upload Page Specific Styles */
+.photo-upload-container {
+    position: relative;
+}
+
+/* Accessibility Improvements */
+.btn:focus, .form-control:focus, .form-check-input:focus {
+    box-shadow: 0 0 0 0.25rem rgba(12, 99, 228, 0.25);
+}
+
+/* Accessibility Mode Styles */
+.accessibility-toggle button {
+    transition: all 0.3s ease;
+}
+
+.accessibility-toggle button.active {
+    background-color: var(--success-color);
+    border-color: var(--success-color);
+    color: white;
+}
+
+/* High Contrast Mode */
+body.accessibility-mode {
+    /* Increase contrast and readability */
+    --primary-color: #0047b3;
+    --secondary-color: #555555;
+    --success-color: #006600;
+    --info-color: #0066cc;
+    --warning-color: #cc6600;
+    --danger-color: #cc0000;
+    --light-color: #ffffff;
+    --dark-color: #000000;
+    
+    /* Increase font size */
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+body.accessibility-mode .navbar-dark {
+    background-color: #0047b3 !important;
+}
+
+body.accessibility-mode .btn {
+    font-weight: bold;
+}
+
+body.accessibility-mode .card {
+    border-width: 2px;
+}
+
+body.accessibility-mode .form-control {
+    font-size: 1.1rem;
+    padding: 0.5rem 0.75rem;
+}
+
+body.accessibility-mode .form-label {
+    font-weight: bold;
+}
+
+body.accessibility-mode .badge {
+    font-size: 0.9rem;
+    padding: 0.4em 0.6em;
+}
+
+body.accessibility-mode a:focus,
+body.accessibility-mode button:focus,
+body.accessibility-mode input:focus,
+body.accessibility-mode select:focus,
+body.accessibility-mode textarea:focus {
+    outline: 3px solid #0047b3;
+    outline-offset: 2px;
+}
+
+body.accessibility-mode .card:hover {
+    transform: none;
+    box-shadow: 0 0 0 3px rgba(0, 71, 179, 0.5);
+}
+
+body.accessibility-mode .hero-section img:hover {
+    transform: none;
+}
+
+/* Skip to content link for keyboard navigation */
+.skip-to-content {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: var(--primary-color);
+    color: white;
+    padding: 8px;
+    z-index: 100;
+    transition: top 0.3s;
+}
+
+.skip-to-content:focus {
+    top: 0;
+}
+
+/* Print Styles */
+@media print {
+    .no-print {
+        display: none !important;
+    }
+    
+    .container {
+        width: 100%;
+        max-width: 100%;
+    }
+}

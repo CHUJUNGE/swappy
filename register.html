@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - Swappy</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="images/logo.png" alt="Swappy Logo" height="40" class="d-inline-block align-text-top me-2">
+                Swappy
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="browse.html">Browse Items</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="upload.html">Upload Item</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="rules.html">Rules</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact Us</a>
+                    </li>
+                </ul>
+                <div class="d-flex align-items-center">
+                    <!-- Accessibility Toggle -->
+                    <div class="accessibility-toggle me-3">
+                        <button class="btn btn-outline-light" id="accessibilityBtn" title="Toggle Accessibility Mode">
+                            <i class="fas fa-universal-access"></i>
+                        </button>
+                    </div>
+                    <div id="loginButtons">
+                        <a href="login.html" class="btn btn-outline-light me-2">Login</a>
+                        <a href="register.html" class="btn btn-light active">Register</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Register Section -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-7">
+                    <div class="card shadow-sm border-0 rounded-lg">
+                        <div class="card-header bg-white text-center py-4">
+                            <h2 class="mb-0 fw-bold">Create an Account</h2>
+                            <p class="text-muted mb-0">Join the University of Melbourne's sustainable swap community</p>
+                        </div>
+                        <div class="card-body p-4">
+                            <!-- University Login Button -->
+                            <div class="d-grid mb-4">
+                                <a href="#" class="btn btn-lg btn-primary d-flex align-items-center justify-content-center" id="uniLoginBtn">
+                                    <img src="images/unimelb-logo.png" alt="University of Melbourne" height="30" class="me-2">
+                                    Register with University Account
+                                </a>
+                            </div>
+                            
+                            <div class="text-center mb-4">
+                                <span class="divider-text">or register with email</span>
+                            </div>
+                            
+                            <!-- Registration Form -->
+                            <form id="registerForm" class="needs-validation" novalidate>
+                                <!-- Full Name -->
+                                <div class="row mb-3">
+                                    <div class="col-md-6 mb-3 mb-md-0">
+                                        <label for="firstName" class="form-label">First Name <span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" id="firstName" required>
+                                        <div class="invalid-feedback">
+                                            Please enter your first name.
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="lastName" class="form-label">Last Name <span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" id="lastName" required>
+                                        <div class="invalid-feedback">
+                                            Please enter your last name.
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Email -->
+                                <div class="mb-3">
+                                    <label for="email" class="form-label">University Email <span class="text-danger">*</span></label>
+                                    <div class="input-group">
+                                        <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                                        <input type="email" class="form-control" id="email" placeholder="your.name@student.unimelb.edu.au" required>
+                                    </div>
+                                    <div class="form-text">Must be a valid University of Melbourne email address.</div>
+                                    <div class="invalid-feedback">
+                                        Please enter a valid university email address.
+                                    </div>
+                                </div>
+                                
+                                <!-- Student/Staff ID -->
+                                <div class="mb-3">
+                                    <label for="studentId" class="form-label">Student/Staff ID <span class="text-danger">*</span></label>
+                                    <div class="input-group">
+                                        <span class="input-group-text"><i class="fas fa-id-card"></i></span>
+                                        <input type="text" class="form-control" id="studentId" required>
+                                    </div>
+                                    <div class="invalid-feedback">
+                                        Please enter your student or staff ID.
+                                    </div>
+                                </div>
+                                
+                                <!-- Password -->
+                                <div class="mb-3">
+                                    <label for="password" class="form-label">Password <span class="text-danger">*</span></label>
+                                    <div class="input-group">
+                                        <span class="input-group-text"><i class="fas fa-lock"></i></span>
+                                        <input type="password" class="form-control" id="password" required>
+                                        <button class="btn btn-outline-secondary" type="button" id="togglePassword">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                    </div>
+                                    <div class="form-text">Must be at least 8 characters with at least one uppercase letter, one lowercase letter, one number, and one special character.</div>
+                                    <div class="invalid-feedback">
+                                        Please enter a valid password.
+                                    </div>
+                                </div>
+                                
+                                <!-- Confirm Password -->
+                                <div class="mb-3">
+                                    <label for="confirmPassword" class="form-label">Confirm Password <span class="text-danger">*</span></label>
+                                    <div class="input-group">
+                                        <span class="input-group-text"><i class="fas fa-lock"></i></span>
+                                        <input type="password" class="form-control" id="confirmPassword" required>
+                                        <button class="btn btn-outline-secondary" type="button" id="toggleConfirmPassword">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                    </div>
+                                    <div class="invalid-feedback">
+                                        Passwords do not match.
+                                    </div>
+                                </div>
+                                
+                                <!-- Phone Number -->
+                                <div class="mb-3">
+                                    <label for="phone" class="form-label">Phone Number</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text"><i class="fas fa-phone"></i></span>
+                                        <input type="tel" class="form-control" id="phone" placeholder="04XX XXX XXX">
+                                    </div>
+                                    <div class="form-text">Optional, but helpful for drop-off coordination.</div>
+                                </div>
+                                
+                                <!-- Terms and Privacy -->
+                                <div class="mb-3 form-check">
+                                    <input type="checkbox" class="form-check-input" id="termsCheck" required>
+                                    <label class="form-check-label" for="termsCheck">
+                                        I agree to the <a href="rules.html#terms" target="_blank">Terms of Service</a> and <a href="rules.html#privacy" target="_blank">Privacy Policy</a> <span class="text-danger">*</span>
+                                    </label>
+                                    <div class="invalid-feedback">
+                                        You must agree to the terms and privacy policy.
+                                    </div>
+                                </div>
+                                
+                                <!-- Newsletter -->
+                                <div class="mb-4 form-check">
+                                    <input type="checkbox" class="form-check-input" id="newsletterCheck">
+                                    <label class="form-check-label" for="newsletterCheck">
+                                        Subscribe to our newsletter for weekly theme updates and news
+                                    </label>
+                                </div>
+                                
+                                <!-- Register Button -->
+                                <div class="d-grid">
+                                    <button type="submit" class="btn btn-primary btn-lg">Create Account</button>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="card-footer bg-white text-center py-3">
+                            <p class="mb-0">Already have an account? <a href="login.html" class="text-decoration-none">Login</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Email Verification Modal -->
+    <div class="modal fade" id="verificationModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header bg-primary text-white">
+                    <h5 class="modal-title">Verify Your Email</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center py-4">
+                    <i class="fas fa-envelope-open-text fa-5x text-primary mb-3"></i>
+                    <h4>Almost There!</h4>
+                    <p>We've sent a verification email to your university email address. Please check your inbox and click the verification link to complete your registration.</p>
+                    <p class="mb-0 small text-muted">If you don't see the email, check your spam folder or click the resend button below.</p>
+                </div>
+                <div class="modal-footer justify-content-center">
+                    <button type="button" class="btn btn-outline-secondary" id="resendVerificationBtn">Resend Verification Email</button>
+                    <a href="login.html" class="btn btn-primary">Go to Login</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4 mt-auto">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4 mb-md-0">
+                    <h5>About Swappy</h5>
+                    <p>Swappy is the University of Melbourne's sustainable swap shop platform, promoting reuse and reducing waste within our university community.</p>
+                </div>
+                <div class="col-md-2 mb-4 mb-md-0">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="index.html" class="text-white">Home</a></li>
+                        <li><a href="browse.html" class="text-white">Browse Items</a></li>
+                        <li><a href="upload.html" class="text-white">Upload Item</a></li>
+                        <li><a href="rules.html" class="text-white">Rules</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3 mb-4 mb-md-0">
+                    <h5>Contact Us</h5>
+                    <ul class="list-unstyled">
+                        <li><i class="fas fa-map-marker-alt me-2"></i> Student Union Building, University of Melbourne</li>
+                        <li><i class="fas fa-envelope me-2"></i> swappy@unimelb.edu.au</li>
+                        <li><i class="fas fa-phone me-2"></i> (03) 8344 XXXX</li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h5>Opening Hours</h5>
+                    <ul class="list-unstyled">
+                        <li>Tuesday - Friday: 10am - 4pm</li>
+                        <li>Saturday: 11am - 3pm</li>
+                        <li>Sunday: Closed</li>
+                        <li>Monday: Drop-off Day (Closed for regular operations)</li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="row align-items-center">
+                <div class="col-md-6 text-center text-md-start">
+                    <p class="mb-0">&copy; 2025 Swappy - University of Melbourne. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <ul class="list-inline mb-0">
+                        <li class="list-inline-item"><a href="#" class="text-white"><i class="fab fa-facebook-f"></i></a></li>
+                        <li class="list-inline-item"><a href="#" class="text-white"><i class="fab fa-instagram"></i></a></li>
+                        <li class="list-inline-item"><a href="#" class="text-white"><i class="fab fa-twitter"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/register.js"></script>
+</body>
+</html>

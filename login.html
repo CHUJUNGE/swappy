@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Swappy</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="images/logo.png" alt="Swappy Logo" height="40" class="d-inline-block align-text-top me-2">
+                Swappy
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="browse.html">Browse Items</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="upload.html">Upload Item</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="rules.html">Rules</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact Us</a>
+                    </li>
+                </ul>
+                <div class="d-flex align-items-center">
+                    <!-- Accessibility Toggle -->
+                    <div class="accessibility-toggle me-3">
+                        <button class="btn btn-outline-light" id="accessibilityBtn" title="Toggle Accessibility Mode">
+                            <i class="fas fa-universal-access"></i>
+                        </button>
+                    </div>
+                    <div id="loginButtons">
+                        <a href="login.html" class="btn btn-outline-light me-2 active">Login</a>
+                        <a href="register.html" class="btn btn-light">Register</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Login Section -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-5">
+                    <div class="card shadow-sm border-0 rounded-lg">
+                        <div class="card-header bg-white text-center py-4">
+                            <h2 class="mb-0 fw-bold">Login to Swappy</h2>
+                            <p class="text-muted mb-0">Access your account using your University credentials</p>
+                        </div>
+                        <div class="card-body p-4">
+                            <!-- University Login Button -->
+                            <div class="d-grid mb-4">
+                                <a href="#" class="btn btn-lg btn-primary d-flex align-items-center justify-content-center" id="uniLoginBtn">
+                                    <img src="images/unimelb-logo.png" alt="University of Melbourne" height="30" class="me-2">
+                                    Login with University Account
+                                </a>
+                            </div>
+                            
+                            <div class="text-center mb-4">
+                                <span class="divider-text">or login with email</span>
+                            </div>
+                            
+                            <!-- Login Form -->
+                            <form id="loginForm" class="needs-validation" novalidate>
+                                <!-- Email -->
+                                <div class="mb-3">
+                                    <label for="email" class="form-label">University Email</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                                        <input type="email" class="form-control" id="email" placeholder="your.name@student.unimelb.edu.au" required>
+                                    </div>
+                                    <div class="invalid-feedback">
+                                        Please enter your university email address.
+                                    </div>
+                                </div>
+                                
+                                <!-- Password -->
+                                <div class="mb-3">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <label for="password" class="form-label">Password</label>
+                                        <a href="forgot-password.html" class="small text-decoration-none">Forgot Password?</a>
+                                    </div>
+                                    <div class="input-group">
+                                        <span class="input-group-text"><i class="fas fa-lock"></i></span>
+                                        <input type="password" class="form-control" id="password" required>
+                                        <button class="btn btn-outline-secondary" type="button" id="togglePassword">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                    </div>
+                                    <div class="invalid-feedback">
+                                        Please enter your password.
+                                    </div>
+                                </div>
+                                
+                                <!-- Remember Me -->
+                                <div class="mb-3 form-check">
+                                    <input type="checkbox" class="form-check-input" id="rememberMe">
+                                    <label class="form-check-label" for="rememberMe">Remember me</label>
+                                </div>
+                                
+                                <!-- Login Button -->
+                                <div class="d-grid">
+                                    <button type="submit" class="btn btn-primary btn-lg">Login</button>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="card-footer bg-white text-center py-3">
+                            <p class="mb-0">Don't have an account? <a href="register.html" class="text-decoration-none">Register</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4 mt-auto">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4 mb-md-0">
+                    <h5>About Swappy</h5>
+                    <p>Swappy is the University of Melbourne's sustainable swap shop platform, promoting reuse and reducing waste within our university community.</p>
+                </div>
+                <div class="col-md-2 mb-4 mb-md-0">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="index.html" class="text-white">Home</a></li>
+                        <li><a href="browse.html" class="text-white">Browse Items</a></li>
+                        <li><a href="upload.html" class="text-white">Upload Item</a></li>
+                        <li><a href="rules.html" class="text-white">Rules</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3 mb-4 mb-md-0">
+                    <h5>Contact Us</h5>
+                    <ul class="list-unstyled">
+                        <li><i class="fas fa-map-marker-alt me-2"></i> Student Union Building, University of Melbourne</li>
+                        <li><i class="fas fa-envelope me-2"></i> swappy@unimelb.edu.au</li>
+                        <li><i class="fas fa-phone me-2"></i> (03) 8344 XXXX</li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h5>Opening Hours</h5>
+                    <ul class="list-unstyled">
+                        <li>Tuesday - Friday: 10am - 4pm</li>
+                        <li>Saturday: 11am - 3pm</li>
+                        <li>Sunday: Closed</li>
+                        <li>Monday: Drop-off Day (Closed for regular operations)</li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="row align-items-center">
+                <div class="col-md-6 text-center text-md-start">
+                    <p class="mb-0">&copy; 2025 Swappy - University of Melbourne. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <ul class="list-inline mb-0">
+                        <li class="list-inline-item"><a href="#" class="text-white"><i class="fab fa-facebook-f"></i></a></li>
+                        <li class="list-inline-item"><a href="#" class="text-white"><i class="fab fa-instagram"></i></a></li>
+                        <li class="list-inline-item"><a href="#" class="text-white"><i class="fab fa-twitter"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/login.js"></script>
+</body>
+</html>
